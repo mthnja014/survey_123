@@ -1,0 +1,732 @@
+<html>
+<head>
+<title></title>
+	<meta charset="utf-8">
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+#formDiv {
+width:100%;
+}
+
+html, body {
+width: 100%;
+height: 100%;
+background-color: #CEEED9;
+}
+
+table, tr, td {
+  border: solid 1px;
+  background-color: #fff;
+  display: auto;
+}
+
+#submit {
+background-color: green;
+}
+</style>
+</head>
+<body>
+  <div id='formDiv'></div>
+  <center>
+    <table><tr><td></td><td>0</td><td>0.5</td><td>1</td><td>N/A</td><td>N/V</td><td>Weight</td><td>Score</td></tr><tr>
+      <td>Soil Classification</td><td><input type='radio' id='s0' name='soil' value=0></td><td><input type='radio' id='s0_5' name='soil'  value=7.5></td><td><input type='radio' id='s1' name='soil' value=15></td><td><input type='radio' id='sna' name='soil' value=0></td><td><input type='radio' id='snv' name='soil' value=0></td><td>15</td><td><p id='s_score'></p></td>
+    </tr><tr>
+      <td>Dolomite Areas</td><td><input type='radio' id='dolomite0' name='dolomite' value=0></td><td><input type='radio' id='dolomite0_5' name='dolomite' value=7.5></td><td><input type='radio' id='dolomite1' name='dolomite' value=15></td><td><input type='radio' id='dolomitena' name='dolomite' value=0></td><td><input type='radio' id='dolomitenv' name='dolomite' value=0></td><td>15</td><td><p id='dolomite_score'></p></td>
+    </tr><tr>
+      <td>Site Clearance</td><td><input type='radio' id='clearance0' name='clearance' value=0></td><td><input type='radio' id='clearance0_5' name='clearance' value=1.5></td><td><input type='radio' id='clearance1' name='clearance' value=3></td><td><input type='radio' id='clearancena' name='clearance' value=0></td><td><input type='radio' id='clearancenv' name='clearance' value=0></td><td>3</td><td><p id='clearance_score'></p></td>
+        </tr><tr>
+          <td>Water Logged Site</td><td><input type='radio' id='waterLogged0' name='waterLogged' value=0></td><td><input type='radio' id='waterLogged0_5' name='waterLogged' value=1.5></td><td><input type='radio' id='waterLogged1' name='waterLogged' value=3></td><td><input type='radio' id='waterLoggedna' name='waterLogged' value=0></td><td><input type='radio' id='waterLoggednv' name='waterLogged' value=0></td><td>3</td><td><p id='waterLogged_score'></p></td>
+        </tr><tr>
+          <td>Excavations</td><td><input type='radio' id='excavations0' name='excavations' value=0></td><td><input type='radio' id='excavations0_5' name='excavations' value=2.5></td><td><input type='radio' id='excavations1' name='excavations' value=5></td><td><input type='radio' id='excavationsna' name='excavations' value=0></td><td><input type='radio' id='excavationsnv' name='excavations' value=0></td><td>5</td><td><p id='excavations_score'></p></td>
+        </tr><tr>
+          <td>Raft Slabs</td><td><input type='radio' id='raft0' name='raft' value=0></td><td><input type='radio' id='raft0_5' name='raft' value=2.5></td><td><input type='radio' id='raft1' name='raft' value=5></td><td><input type='radio' id='raftna' name='raft' value=0></td><td><input type='radio' id='raftnv' name='raft' value=0></td><td>5</td><td><p id='raft_score'></p></td>
+        </tr><tr>
+          <td>Reinforcement</td><td><input type='radio' id='reinforcement0' name='reinforcement' value=0></td><td><input type='radio' id='reinforcement0_5' name='reinforcement' value=2.5></td><td><input type='radio' id='reinforcement1' name='reinforcement' value=5></td><td><input type='radio' id='reinforcementna' name='reinforcement' value=0></td><td><input type='radio' id='reinforcementnv' name='reinforcement' value=0></td><td>5</td><td><p id='reinforcement_score'></p></td>
+        </tr><tr>
+          <td>Concrete</td><td><input type='radio' id='concrete0' name='concrete' value=0></td><td><input type='radio' id='concrete0_5' name='concrete' value=2.5></td><td><input type='radio' id='concrete1' name='concrete' value=5></td><td><input type='radio' id='concretena' name='concrete' value=0></td><td><input type='radio' id='concretenv' name='concrete' value=0></td><td>5</td><td><p id='concrete_score'></p></td>
+        </tr><tr>
+          <td>Masonry</td><td><input type='radio' id='masonry0' name='masonry'></td><td><input type='radio' id='masonry0_5' name='masonry'></td><td><input type='radio' id='masonry1' name='masonry'></td><td><input type='radio' id='masonryna' name='masonry'></td><td><input type='radio' id='masonrynv' name='masonry'></td><td>3</td><td><p id='masonry_score'></p></td>
+        </tr><tr>
+          <td>Infill of Masonry</td><td><input type='radio' id='infillMasonry0' name='infillMasonry'></td><td><input type='radio' id='infillMasonry0_5' name='infillMasonry'></td><td><input type='radio' id='infillMasonry1' name='infillMasonry'></td><td><input type='radio' id='infillMasonryna' name='infillMasonry'></td><td><input type='radio' id='infillMasonrynv' name='infillMasonry'></td><td>3</td><td><p id='infillMasonry_score'></p></td>
+        </tr><tr>
+          <td>Brick force and w/Ties</td><td><input type='radio' id='brickForce0' name='brickForce'></td><td><input type='radio' id='brickForce0_5' name='brickForce'></td><td><input type='radio' id='brickForce1' name='brickForce'></td><td><input type='radio' id='brickForcena' name='brickForce'></td><td><input type='radio' id='brickForcenv' name='brickForce'></td><td>3</td><td><p id='brickForce_score'></p></td>
+        </tr><tr>
+          <td>Filling</td><td><input type='radio' id='filling0' name='filling'></td><td><input type='radio' id='filling0_5' name='filling'></td><td><input type='radio' id='filling1' name='filling'></td><td><input type='radio' id='fillingna' name='filling'></td><td><input type='radio' id='fillingnv' name='filling'></td><td>5</td><td><p id='filling_score'></p></td>
+        </tr><tr>
+          <td>Surface Water Disposal</td><td><input type='radio' id='surfaceWater0' name='surfaceWater'></td><td><input type='radio' id='surfaceWater0_5' name='surfaceWater'></td><td><input type='radio' id='surfaceWater1' name='surfaceWater'></td><td><input type='radio' id='surfaceWaterna' name='surfaceWater'></td><td><input type='radio' id='surfaceWaternv' name='surfaceWater'></td><td>3</td><td><p id='surfaceWater_score'></p></td>
+        </tr><tr>
+          <td>Dpm under floors</td><td><input type='radio' id='dpm0' name='dpm'></td><td><input type='radio' id='dpm0_5' name='dpm'></td><td><input type='radio' id='dpm1' name='dpm'></td><td><input type='radio' id='dpmna' name='dpm'></td><td><input type='radio' id='dpmnv' name='dpm'></td><td>3</td><td><p id='dpm_score'></p></td>
+        </tr><tr>
+          <td>Fabric reinforcement</td><td><input type='radio' id='fabReinforcement0' name='fabReinforcement'></td><td><input type='radio' id='fabReinforcement0_5' name='fabReinforcement'></td><td><input type='radio' id='fabReinforcement1' name='fabReinforcement'></td><td><input type='radio' id='fabReinforcementna' name='fabReinforcement'></td><td><input type='radio' id='fabReinforcementnv' name='fabReinforcement'></td><td>3</td><td><p id='fabReinforcement_score'></p></td>
+        </tr><tr>
+          <td>Concrete surface beds</td><td><input type='radio' id='concreteSurface0' name='concreteSurface'></td><td><input type='radio' id='concreteSurface0_5' name='concreteSurface'></td><td><input type='radio' id='concreteSurface1' name='concreteSurface'></td><td><input type='radio' id='concreteSurfacena' name='concreteSurface'></td><td><input type='radio' id='concreteSurfacenv' name='concreteSurface'></td><td>5</td><td><p id='concreteSurface_score'></p></td>
+        </tr><tr>
+          <td>Constructions joints</td><td><input type='radio' id='constructionJoints0' name='constructionJoints'></td><td><input type='radio' id='constructionJoints0_5' name='constructionJoints'></td><td><input type='radio' id='constructionJoints1' name='constructionJoints'></td><td><input type='radio' id='constructionJointsna' name='constructionJoints'></td><td><input type='radio' id='constructionJointsnv' name='constructionJoints'></td><td>3</td><td><p id='constructionJoints_score'></p></td>
+        </tr><tr>
+          <td>Basement and split level</td><td><input type='radio' id='basement0' name='basement'></td><td><input type='radio' id='basement0_5' name='basement'></td><td><input type='radio' id='basement1' name='basement'></td><td><input type='radio' id='basementna' name='basement'></td><td><input type='radio' id='basementnv' name='basement'></td><td>5</td><td><p id='basement_score'></p></td>
+        </tr><tr>
+          <td>Suspended timber floors</td><td><input type='radio' id='suspendedTimber0' name='suspendedTimber'></td><td><input type='radio' id='suspendedTimber0_5' name='suspendedTimber'></td><td><input type='radio' id='suspendedTimber1' name='suspendedTimber'></td><td><input type='radio' id='suspendedTimberna' name='suspendedTimber'></td><td><input type='radio' id='suspendedTimbernv' name='suspendedTimber'></td><td>5</td><td><p id='suspendedTimber_score'></p></td>
+        </tr><tr>
+          <td>Documentation</td><td><input type='radio' id='documentation0' name='documentation'></td><td><input type='radio' id='documentation0_5' name='documentation'></td><td><input type='radio' id='documentation1' name='documentation'></td><td><input type='radio' id='documentationna' name='documentation'></td><td><input type='radio' id='documentationnv' name='documentation'></td><td>3</td><td><p id='documentation_score'></p></td>
+        </tr><tr>
+          <td><b>Total</b></td><td></td><td></td><td></td><td></td><td></td><td><b>100</b></td><td><p id='total_sub'></p></td>
+        </tr><tr>
+          <td><button id='submit' onclick='myForm()'>Calculate Scores</button></td>
+        </tr>
+</table>
+</center>
+<script src='https://survey123.arcgis.com/api/jsapi'></script>
+<script>
+function myForm() {
+
+var reinforcement0_5 = document.getElementById('reinforcement0_5').checked;
+var reinforcement1 = document.getElementById('reinforcement1').checked;
+var reinforcement_score = document.getElementById('reinforcement_score').innerHTML;
+
+var concrete0_5 = document.getElementById('concrete0_5').checked;
+var concrete1 = document.getElementById('concrete1').checked;
+var concrete_score = document.getElementById('concrete_score').innerHTML;
+
+var masonry0_5 = document.getElementById('masonry0_5').checked;
+var masonry1 = document.getElementById('masonry1').checked;
+var masonry_score = document.getElementById('masonry_score').innerHTML;
+
+var infillMasonry0_5 = document.getElementById('infillMasonry0_5').checked;
+var infillMasonry1 = document.getElementById('infillMasonry1').checked;
+var infillMasonry_score = document.getElementById('infillMasonry_score').innerHTML;
+
+var brickForce0_5 = document.getElementById('brickForce0_5').checked;
+var brickForce1 = document.getElementById('brickForce1').checked;
+var brickForce_score = document.getElementById('brickForce_score').innerHTML;
+
+var filling0_5 = document.getElementById('filling0_5').checked;
+var filling1 = document.getElementById('filling1').checked;
+var filling_score = document.getElementById('filling_score').innerHTML;
+
+var surfaceWater0_5 = document.getElementById('surfaceWater0_5').checked;
+var surfaceWater1 = document.getElementById('surfaceWater1').checked;
+var surfaceWater_score = document.getElementById('surfaceWater_score').innerHTML;
+
+var dpm0_5 = document.getElementById('dpm0_5').checked;
+var dpm1 = document.getElementById('dpm1').checked;
+var dpm_score = document.getElementById('dpm_score').innerHTML;
+
+var fabReinforcement0_5 = document.getElementById('fabReinforcement0_5').checked;
+var fabReinforcement1 = document.getElementById('fabReinforcement1').checked;
+var fabReinforcement_score = document.getElementById('fabReinforcement_score').innerHTML;
+
+var concreteSurface0_5 = document.getElementById('concreteSurface0_5').checked;
+var concreteSurface1 = document.getElementById('concreteSurface1').checked;
+var concreteSurface_score = document.getElementById('concreteSurface_score').innerHTML;
+
+var constructionJoints0_5 = document.getElementById('constructionJoints0_5').checked;
+var constructionJoints1 = document.getElementById('constructionJoints1').checked;
+var constructionJoints_score = document.getElementById('constructionJoints_score').innerHTML;
+
+var basement0_5 = document.getElementById('basement0_5').checked;
+var basement1 = document.getElementById('basement1').checked;
+var basement_score = document.getElementById('basement_score').innerHTML;
+
+var suspendedTimber0_5 = document.getElementById('suspendedTimber0_5').checked;
+var suspendedTimber1 = document.getElementById('suspendedTimber1').checked;
+var suspendedTimber_score = document.getElementById('suspendedTimber_score').innerHTML;
+
+var documentation0_5 = document.getElementById('documentation0_5').checked;
+var documentation1 = document.getElementById('documentation1').checked;
+var documentation_score = document.getElementById('documentation_score').innerHTML;
+
+var total_sc = [];
+
+//CHECK FORM AND VALUES SOIL CLASSIFICATION
+var s0_5 = document.getElementById('s0_5').checked;
+var s1 = document.getElementById('s1').checked;
+var s0 = document.getElementById('s0').checked;
+var sna = document.getElementById('sna').checked;
+var snv = document.getElementById('snv').checked;
+
+var s0v = document.getElementById('s0').value;
+var s0_5v = document.getElementById('s0_5').value;
+var s1v = document.getElementById('s1').value;
+var snav = document.getElementById('sna').value;
+var snvv = document.getElementById('snv').value;
+
+// DOLOMITE AREAS
+var dolomite0 = document.getElementById('dolomite0').checked;
+var dolomite0_5 = document.getElementById('dolomite0_5').checked;
+var dolomite1 = document.getElementById('dolomite1').checked;
+var dolomitena = document.getElementById('dolomitena').checked;
+var dolomitenv = document.getElementById('dolomitenv').checked;
+
+var dolomite0v = document.getElementById('dolomite0').value;
+var dolomite0_5v = document.getElementById('dolomite0_5').value;
+var dolomite1v = document.getElementById('dolomite1').value;
+var dolomitenav = document.getElementById('dolomitena').value;
+var dolomitenvv = document.getElementById('dolomitenv').value;
+
+
+// Site Clearance
+var clearance0 = document.getElementById('clearance0').checked;
+var clearance0_5 = document.getElementById('clearance0_5').checked;
+var clearance1 = document.getElementById('clearance1').checked;
+var clearancena = document.getElementById('clearancena').checked;
+var clearancenv = document.getElementById('clearancenv').checked;
+
+var clearance0v = document.getElementById('clearance0').value;
+var clearance0_5v = document.getElementById('clearance0_5').value;
+var clearance1v = document.getElementById('clearance1').value;
+var clearancenav = document.getElementById('clearancena').value;
+var clearancenvv = document.getElementById('clearancenv').value;
+
+//Water Logged Site
+var waterLogged0 = document.getElementById('waterLogged0').checked;
+var waterLogged0_5 = document.getElementById('waterLogged0_5').checked;
+var waterLogged1 = document.getElementById('waterLogged1').checked;
+var waterLoggedna = document.getElementById('waterLoggedna').checked;
+var waterLoggednv = document.getElementById('waterLoggednv').checked;
+
+var waterLogged0v = document.getElementById('waterLogged0').value;
+var waterLogged0_5v = document.getElementById('waterLogged0_5').value;
+var waterLogged1v = document.getElementById('waterLogged1').value;
+var waterLoggednav = document.getElementById('waterLoggedna').value;
+var waterLoggednvv = document.getElementById('waterLoggednv').value;
+
+
+// Excavations
+var excavations0 = document.getElementById('excavations0').checked;
+var excavations0_5 = document.getElementById('excavations0_5').checked;
+var excavations1 = document.getElementById('excavations1').checked;
+var excavationsna = document.getElementById('excavationsna').checked;
+var excavationsnv = document.getElementById('excavationsnv').checked;
+
+var excavations0v = document.getElementById('excavations0').value;
+var excavations0_5v = document.getElementById('excavations0_5').value;
+var excavations1v = document.getElementById('excavations1').value;
+var excavationsnav = document.getElementById('excavationsna').value;
+var excavationsnvv = document.getElementById('excavationsnv').value;
+
+// Raft Slabs
+var raft0 = document.getElementById('raft0').checked;
+var raft0_5 = document.getElementById('raft0_5').checked;
+var raft1 = document.getElementById('raft1').checked;
+var raftna = document.getElementById('raftna').checked;
+var raftnv = document.getElementById('raftnv').checked;
+
+var raft0v = document.getElementById('raft0').value;
+var raft0_5v = document.getElementById('raft0_5').value;
+var raft1v = document.getElementById('raft1').value;
+var raftnav = document.getElementById('raftna').value;
+var raftnvv = document.getElementById('raftnv').value;
+
+// Reinforcement
+var reinforcement0 = document.getElementById('reinforcement0').checked;
+var reinfprcement0_5 = document.getElementById('reinforcement0_5').checked;
+var reinforcement1 = document.getElementById('reinforcement1').checked;
+var reinforcementna = document.getElementById('reinforcementna').checked;
+var reinforcementnv = document.getElementById('reinforcementnv').checked;
+
+var reinforcement0v = document.getElementById('reinforcement0').value;
+var reinforcement0_5v = document.getElementById('reinforcement0_5').value;
+var reinforcement1v = document.getElementById('reinforcement1').value;
+var reinforcementnav = document.getElementById('reinforcementna').value;
+var reinforcementnvv = document.getElementById('reinforcementnv').value;
+
+// Concrete
+var concrete0 = document.getElementById('concrete0').checked;
+var concrete0_5 = document.getElementById('concrete0_5').checked;
+var concrete1 = document.getElementById('concrete1').checked;
+var concretena = document.getElementById('concretena').checked;
+var concretenv = document.getElementById('concretenv').checked;
+
+var concrete0v = document.getElementById('concrete0').value;
+var concrete0_5v = document.getElementById('concrete0_5').value;
+var concrete1v = document.getElementById('concrete1').value;
+var concretenav = document.getElementById('concretena').value;
+var cocncretenvv = document.getElementById('concretenv').value;
+
+//clear survey form
+document.getElementById('formDiv').innerHTML = '';
+
+var WebForm = new Survey123WebForm({
+   clientId: "2DVBJDJUYZhWYkjh",
+   container: "formDiv",
+  itemId: "c023ef1c22c94cd29b49dd5d475debd1",
+  portalUrl: "https://www.arcgis.com",
+  hideElements: ["field:capentry", "field:storm_completion", "field:practical_completion", "field:super_structure", "field:plumbing", "field:electricity","field:waterp"],
+
+ onFormLoaded: (data)=> {
+
+  if(s0) {
+document.getElementById('s_score').innerHTML = s0v;
+var s_score = s0v;
+var sub_total = Math.pow(s_score, 1);
+total_sc.push(sub_total);
+document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+	"soil_classification": 'zero',
+	"score_soil_classification": s0v,
+  "total_sub_score": sub_total,
+  });
+}else if(s0_5) {
+document.getElementById('s_score').innerHTML = s0_5v;
+var s_score = s0_5v;
+var sub_total = Math.pow(s_score, 1);
+total_sc.push(sub_total);
+document.getElementById('total_sub').innerHTML = sub_total;
+WebForm.setQuestionValue({
+	"soil_classification": 'half',
+	"score_soil_classification": s0_5v,
+  "total_sub_score": sub_total,
+  });
+}else if(s1) {
+document.getElementById('s_score').innerHTML = s1v;
+var s_score = s1v;
+var sub_total = Math.pow(s_score, 1);
+total_sc.push(sub_total);
+document.getElementById('total_sub').innerHTML = sub_total;
+WebForm.setQuestionValue({
+	"soil_classification": 'one',
+	"score_soil_classification": s1v,
+  "total_sub_score": sub_total,
+  });
+
+}else if(sna) {
+document.getElementById('s_score').innerHTML = snav;
+var s_score = snav;
+var sub_total = Math.pow(s_score, 1);
+total_sc.push(sub_total);
+document.getElementById('total_sub').innerHTML = sub_total;
+WebForm.setQuestionValue({
+	"soil_classification": 'na',
+	"score_soil_classification": snav,
+  "total_sub_score": sub_total,
+  });
+
+}else if(snv) {
+  document.getElementById('s_score').innerHTML = snvv;
+var s_score = snvv;
+var sub_total = Math.pow(s_score, 1);
+total_sc.push(sub_total);
+document.getElementById('total_sub').innerHTML = sub_total;
+WebForm.setQuestionValue({
+	"soil_classification": 'nv',
+	"score_soil_classification": snvv,
+  "total_sub_score": sub_total,
+  });
+
+ }else
+console.log('error');
+
+
+if(dolomite0) {
+  document.getElementById('dolomite_score').innerHTML =  dolomite0v;
+  var dolomite_score = dolomite0v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "dolomite_areas": 'zero',
+    "score_dolomite_areas": dolomite0v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(dolomite0_5) {
+  document.getElementById('dolomite_score').innerHTML = dolomite0_5v;
+  var dolomite_score = dolomite0_5v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "dolomite_areas": 'half',
+    "score_dolomite_areas": dolomite0_5v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(dolomite1) {
+  document.getElementById('dolomite_score').innerHTML = dolomite1v;
+  var dolomite_score = dolomite1v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "dolomite_areas": 'one',
+    "score_dolomite_areas": dolomite1v,
+    "total_sub_score": sub_total,
+  });
+}else if(dolomitena) {
+  documennt.getElementById('dolomite_score').innerHTML = dolomitenav;
+  var dolomite_score = dolomitenav;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "dolomite_areas": 'na',
+    "score_dolomite_areas": dolomitenav,
+    "total_sub_score": sub_total,
+  });
+
+}else if(dolomitenv) {
+  documennt.getElementById('dolomite_score').innerHTML = dolomitenvv;
+  var dolomite_score = dolomitenvv;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(dolomite_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "dolomite_areas": 'na',
+    "score_dolomite_areas": dolomitenvv,
+    "total_sub_score": sub_total,
+  });
+
+}else
+console.log('error');
+
+
+if(clearance0) {
+  document.getElementById('clearance_score').innerHTML =  clearance0v;
+  var clearance_score = clearance0v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "site_clearance": 'zero',
+    "score_site_clearance": clearance0v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(clearance0_5) {
+  document.getElementById('clearance_score').innerHTML = clearance0_5v;
+  var clearance_score = clearance0_5v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "site_clearance": 'half',
+    "score_site_clearance": clearance0_5v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(clearance1) {
+  document.getElementById('clearance_score').innerHTML = clearance1v;
+  var clearance_score = clearance1v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "site_clearance": 'one',
+    "score_site_clearance": clearance1v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(clearancenv) {
+  document.getElementById('clearance_score').innerHTML = clearancenvv;
+  var clearance_score = clearancenvv;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1);;
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "site_clearance": 'nv',
+    "score_site_clearance": clearancenvv,
+    "total_sub_score": sub_total,
+  });
+
+}else if(clearancena) {
+  document.getElementById('clearance_score').innerHTML = clearancenav;
+  var clearance_score = clearancenav;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "site_clearance": 'na',
+    "score_site_clearance": clearancenav,
+    "total_sub_score": sub_total,
+  });
+}else
+console.log('error');
+
+
+if(waterLogged0) {
+  document.getElementById('waterLogged_score').innerHTML = waterLogged0v;
+  var waterLogged_score = waterLogged0v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "water_logged_site": 'zero',
+    "score_water_logged_site": waterLogged0v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(waterLogged0_5) {
+  document.getElementById('waterLogged_score').innerHTML = waterLogged0_5v;
+  var waterLogged_score = waterLogged0_5v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "water_logged_site": 'half',
+    "score_water_logged_site": waterLogged0_5v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(waterLogged1) {
+  document.getElementById('waterLogged_score').innerHTML = waterLogged1v;
+  var waterLogged_score = waterLogged1v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "water_logged_site": 'one',
+    "score_water_logged_site": waterLogged1v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(waterLoggednv) {
+  document.getElementById('waterLogged_score').innerHTML = waterLoggednvv;
+  var waterLogged_score = waterLoggednvv;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "water_logged_site": 'nv',
+    "score_water_logged_site": waterLoggednvv,
+    "total_sub_score": sub_total,
+  });
+
+}else if(waterLoggedna) {
+  document.getElementById('waterLogged_score').innerHTML = waterLoggednav;
+  var waterLogged_score = waterLoggednav;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "water_logged_site": 'na',
+    "score_water_logged_site": waterLoggednav,
+    "total_sub_score": sub_total,
+  });
+}else
+console.log('error');
+
+if(excavations0) {
+  document.getElementById('excavations_score').innerHTML = excavations0v;
+  var excavations_score = excavations0v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "excavations": 'zero',
+    "score_excavations": excavations0v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(excavations0_5) {
+  document.getElementById('excavations_score').innerHTML = excavations0_5v;
+  var excavations_score = excavations0_5v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "excavations": 'half',
+    "score_excavations": excavations0_5v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(excavations1) {
+  document.getElementById('excavations_score').innerHTML = excavations1v;
+  var excavations_score = excavations1v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "excavations": 'one',
+    "score_excavations": excavations1v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(excavationsnv) {
+  document.getElementById('excavations_score').innerHTML = excavationsnvv;
+  var excavations_score = excavationsnvv;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "excavations": 'nv',
+    "score_excavations": excavationsnvv,
+    "total_sub_score": sub_total,
+  });
+
+}else if(excavationsna) {
+  document.getElementById('excavations_score').innerHTML = excavationsnav;
+  var excavations_score = excavationsnav;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "excavations": 'na',
+    "score_excavations": excavationsnav,
+    "total_sub_score": sub_total,
+  });
+}else
+console.log('error');
+
+if(raft0) {
+  document.getElementById('raft_score').innerHTML = raft0v;
+  var raft_score = raft0v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "raft_slabs": 'zero',
+    "score_raft_slabs": raft0v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(raft0_5) {
+  document.getElementById('raft_score').innerHTML = raft0_5v;
+  var raft_score = raft0_5v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "raft_slabs": 'half',
+    "score_raft_slabs": raft0_5v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(raft1) {
+  document.getElementById('raft_score').innerHTML = raft1v;
+  var raft_score = raft1v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "raft_slabs": 'one',
+    "score_raft_slabs": raft1v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(raftnv) {
+  document.getElementById('raft_score').innerHTML = raftnvv;
+  var raft_score = raftnvv;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "raft_slabs": 'nv',
+    "score_raft_slabs": raftnvv,
+    "total_sub_score": sub_total,
+  });
+
+}else if(raftna) {
+  document.getElementById('raft_score').innerHTML = raftnav;
+  var raft_score = raftnav;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "raft_slabs": 'na',
+    "score_raft_slabs": raftnav,
+    "total_sub_score": sub_total,
+  });
+}else
+console.log('error');
+
+if(reinforcement0) {
+  document.getElementById('reinforcement_score').innerHTML = reinforcement0v;
+  var reinforcement_score = reinforcement0v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1) + Math.pow(reinforcement_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "reinforcement": 'zero',
+    "score_reinforcement": reinforcement0v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(reinforcement0_5) {
+  document.getElementById('reinforcement_score').innerHTML = reinforcement0_5v;
+  var reinforcement_score = reinforcement0_5v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1) + Math.pow(reinforcement_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "reinforcement": 'half',
+    "score_reinforcement": reinforcement0_5v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(reinforcement1) {
+  document.getElementById('reinforcement_score').innerHTML = reinforcement1v;
+  var reinforcement_score = reinforcement1v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1) + Math.pow(reinforcement_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "reinforcement": 'one',
+    "score_reinforcement": reinforcement1v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(reinforcementnv) {
+  document.getElementById('reinforcement_score').innerHTML = reinforcementnvv;
+  var reinforcement_score = reinforcementnvv;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1) + Math.pow(reinforcement_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "reinforcement": 'nv',
+    "score_reinforcement": reinforcementnvv,
+    "total_sub_score": sub_total,
+  });
+
+}else if(reinforcementna) {
+  document.getElementById('reinforcement_score').innerHTML = reinforcementnav;
+  var reinforcement_score = reinforcementnav;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1) + Math.pow(reinforcement_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "reinforcement": 'na',
+    "score_reinforcement": reinforcementnav,
+    "total_sub_score": sub_total,
+  });
+}else
+console.log('error');
+
+if(reinforcement0) {
+  document.getElementById('reinforcement_score').innerHTML = reinforcement0v;
+  var reinforcement_score = reinforcement0v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1) + Math.pow(reinforcement_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "reinforcement": 'zero',
+    "score_reinforcement": reinforcement0v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(reinforcement0_5) {
+  document.getElementById('reinforcement_score').innerHTML = reinforcement0_5v;
+  var reinforcement_score = reinforcement0_5v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1) + Math.pow(reinforcement_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "reinforcement": 'half',
+    "score_reinforcement": reinforcement0_5v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(reinforcement1) {
+  document.getElementById('reinforcement_score').innerHTML = reinforcement1v;
+  var reinforcement_score = reinforcement1v;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1) + Math.pow(reinforcement_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "reinforcement": 'one',
+    "score_reinforcement": reinforcement1v,
+    "total_sub_score": sub_total,
+  });
+
+}else if(reinforcementnv) {
+  document.getElementById('reinforcement_score').innerHTML = reinforcementnvv;
+  var reinforcement_score = reinforcementnvv;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1) + Math.pow(reinforcement_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "reinforcement": 'nv',
+    "score_reinforcement": reinforcementnvv,
+    "total_sub_score": sub_total,
+  });
+
+}else if(reinforcementna) {
+  document.getElementById('reinforcement_score').innerHTML = reinforcementnav;
+  var reinforcement_score = reinforcementnav;
+  var sub_total = Math.pow(s_score, 1) + Math.pow(dolomite_score, 1) + Math.pow(clearance_score, 1) + Math.pow(waterLogged_score, 1) + Math.pow(excavations_score, 1) + Math.pow(raft_score, 1) + Math.pow(reinforcement_score, 1);
+  document.getElementById('total_sub').innerHTML = sub_total;
+  WebForm.setQuestionValue({
+    "reinforcement": 'na',
+    "score_reinforcement": reinforcementnav,
+    "total_sub_score": sub_total,
+  });
+}else
+console.log('error');
+  }
+  });
+
+}
+
+</script>
+
+</body>
+</html>
