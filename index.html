@@ -8,30 +8,27 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
-#formDiv {
-width:100%;
-}
+
 
 html, body {
-width: 100%;
-height: 100%;
 background-color: #CEEED9;
 }
 
 table, tr, td {
   border: solid 1px;
   background-color: #fff;
-  display: auto;
+  
 }
 
 #submit {
 background-color: green;
 }
+
 </style>
 </head>
 <body>
-  <div id='formDiv'></div>
-  <center>
+  
+  <div id="tbl"><center>
     <table><tr><td></td><td>0</td><td>0.5</td><td>1</td><td>N/A</td><td>N/V</td><td>Weight</td><td>Score</td></tr><tr>
       <td>Soil Classification</td><td><input type='radio' id='s0' name='soil' value=0></td><td><input type='radio' id='s0_5' name='soil'  value=7.5></td><td><input type='radio' id='s1' name='soil' value=15></td><td><input type='radio' id='sna' name='soil' value=0></td><td><input type='radio' id='snv' name='soil' value=0></td><td>15</td><td><p id='s_score'></p></td>
     </tr><tr>
@@ -78,7 +75,9 @@ background-color: green;
           <td><button id='submit' onclick='myForm()'>Calculate Scores</button></td>
         </tr>
 </table>
-</center>
+</center></div>
+<div id='formDiv'></div>
+
 <script src='https://survey123.arcgis.com/api/jsapi'></script>
 <script>
 function myForm() {
@@ -255,7 +254,7 @@ var WebForm = new Survey123WebForm({
    container: "formDiv",
   itemId: "c023ef1c22c94cd29b49dd5d475debd1",
   portalUrl: "https://www.arcgis.com",
-  hideElements: ["field:capentry", "field:storm_completion", "field:practical_completion", "field:super_structure", "field:plumbing", "field:electricity","field:waterp"],
+  hideElements: ["field:capentry", "field:storm_completion", "field:practical_completion", "field:super_structure", "field:plumbing", "field:electricity","field:waterp", "field:sub_structure"],
 
  onFormLoaded: (data)=> {
 
@@ -723,6 +722,11 @@ if(reinforcement0) {
 console.log('error');
   }
   });
+
+  function remove_table() {
+    document.getElementById('tbl').innerHTML = '';
+  }
+
 
 }
 
